@@ -1,0 +1,20 @@
+{
+  "name": "fulllife",
+  "description": "A Vue.js project",
+  "main": "",
+  "authors": [
+    "mathew.li"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Lmathewli/fulllife",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
