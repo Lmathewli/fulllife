@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Article from '../components/article/article.vue'
 import AddArticle from '../components/addarticle/addarticle.vue'
 import Login from '../components/login.vue'
+import Memory from '../components/memory/memory.vue'
+import AddMemory from '../components/memory/add-memory.vue'
 
 Vue.use(Router)
 
@@ -19,5 +21,13 @@ export default new Router({
     path: '/Login',
     name: 'Login',
     component: Login
+  }, {
+    path: '/Memory',
+    name: 'Memory',
+    component: Memory
+  }, {
+    path: '/addmemory',
+    name: 'AddMemory',
+    component: AddMemory
   }]
 })
