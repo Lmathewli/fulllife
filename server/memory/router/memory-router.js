@@ -19,10 +19,21 @@ router.post('/api/memory/save', (req, res) => {
     }
   })
 })
-// 获取已有账号接口
+
 router.get('/api/memory/find', (req, res) => {
     // 通过模型去查找数据库
   Memory.find((err, data) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(data)
+    }
+  })
+})
+
+router.get('/api/memory/findone', (req, res) => {
+  console.log(req)
+  Memory.findOne({_id: req.body.id}, (err, data) => {
     if (err) {
       res.send(err)
     } else {

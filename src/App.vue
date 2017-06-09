@@ -60,7 +60,7 @@
                     <div class="layout-logo-left">这是一个logo</div>
                     <Menu-item name="1">
                         <Icon type="ios-navigate" :size="iconSize"></Icon>
-                        <router-link tag="span" class="layout-text" to="/memory">
+                        <router-link tag="span" class="layout-text" to="/memories">
                           <a>值得纪念的事情</a>
                         </router-link>
                     </Menu-item>
@@ -81,6 +81,7 @@
                     <i-button type="text" @click="toggleClick">
                         <Icon type="navicon" size="32"></Icon>
                     </i-button>
+                    <schedule :expectDate="memories"></schedule>
                 </div>
                 <div class="layout-breadcrumb">
                     <Breadcrumb>
@@ -95,24 +96,28 @@
                     </div>
                 </div>
                 <div class="layout-copy">
-                    2011-2016 &copy; Mathew Li
+                    2017-2018 &copy; Mathew Li
                 </div>
             </i-col>
         </Row>
     </div>
 </template>
 <script>
+import schedule from './components/schedule/schedule'
 export default {
   data () {
     return {
       spanLeft: 5,
-      spanRight: 19
+      spanRight: 19,
+      memories: 'memories'
     }
   },
   computed: {
     iconSize () {
       return this.spanLeft === 5 ? 14 : 24
     }
+  },
+  created () {
   },
   methods: {
     toggleClick () {
@@ -124,6 +129,9 @@ export default {
         this.spanRight = 19
       }
     }
+  },
+  components: {
+    schedule
   }
 }
 </script>

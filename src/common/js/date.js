@@ -1,4 +1,10 @@
 export function formatDate (date, fmt) {
+  if (!date) {
+    return ''
+  }
+  if (!(date instanceof Date)) {
+    date = new Date(date)
+  }
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
   }

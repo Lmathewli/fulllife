@@ -6,32 +6,12 @@
       </Form-item>
       <Form-item label="发生时间：">
         <Row>
-          <Col span="5">
-            <Form-item prop="date">
-                <Date-picker type="date" format="yyyy/MM/dd" placeholder="date" v-model="memory.happenDate" style="width: 300px;"></Date-picker>
-            </Form-item>
-          </Col>
-          <Col span="2" style="text-align: center">-</Col>
-          <Col span="5">
-            <Form-item prop="time">
-                <Time-picker type="time" format="HH:mm:ss" placeholder="time" v-model="memory.happenTime" style="width: 300px;"></Time-picker>
-            </Form-item>
-          </Col>
+          <Date-picker type="datetime"  v-model="memory.happenDate" placeholder="Date" style="width: 300px"></Date-picker>
         </Row>
       </Form-item>
       <Form-item label="提醒时间：">
         <Row>
-          <Col span="5">
-            <Form-item prop="date">
-                <Date-picker type="date" format="yyyy/MM/dd" placeholder="date" v-model="memory.expectDate" style="width: 300px;"></Date-picker>
-            </Form-item>
-          </Col>
-          <Col span="2" style="text-align: center">-</Col>
-          <Col span="5">
-            <Form-item prop="time">
-                <Time-picker type="time" format="HH:mm:ss" placeholder="time" v-model="memory.expectTime" style="width: 300px;"></Time-picker>
-            </Form-item>
-          </Col>
+          <Date-picker type="datetime"  v-model="memory.expectDate" placeholder="Date" style="width: 300px"></Date-picker>
         </Row>
       </Form-item>
       <Form-item label="地址：">
@@ -57,15 +37,14 @@
 
 <script>
 import Editor from '../editor/editor'
+import {formatDate} from '../../common/js/date.js'
 export default {
   data () {
     return {
       memory: {
         subject: '',
         happenDate: '',
-        happenTime: '',
         expectDate: '',
-        expectTime: '',
         address: '',
         character: '',
         descreption: ''
@@ -80,6 +59,8 @@ export default {
   methods: {
     saveMemory () {
       this.memory.descreption = this.$store.state.editorContent
+      this.memory.happenDate = formatDate(this.memory.happenDate, 'yyyy/MM/dd hh:mm:ss')
+      this.memory.expectDate = formatDate(this.memory.expectDate, 'yyyy/MM/dd hh:mm:ss')
       let params = {
         memory: this.memory
       }
