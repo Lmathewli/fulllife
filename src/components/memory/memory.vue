@@ -1,12 +1,32 @@
 <template>
   <div class="memory">
+    <Breadcrumb>
+        <Breadcrumb-item href="/">主页</Breadcrumb-item>
+        <Breadcrumb-item href="/memories">纪念的事情</Breadcrumb-item>
+    </Breadcrumb>
     <div>
-      <Icon type="heart"></Icon><label>主题:</label><span v-text="memory.subject"></span>
+      <div>
+        <Icon type="heart"></Icon><label>主题：</label>
+        <span v-text="memory.subject"></span>
+      </div>
+      <div>
+        <Icon type="ios-time-outline"></Icon><label>发生的时间：</label>
+        <span>{{memory.happenDate | formateTime}}</span>
+      </div>
+      <div>
+        <Icon type="calendar"></Icon><label>提醒的时间：</label>
+        <span>{{memory.expectDate | formateTime}}</span>
+      </div>
+      <div>
+        <Icon type="document-text"></Icon><label>描述：</label>
+        <span v-html="memory.descreption"></span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import {formatDate} from '../../common/js/date.js'
 export default {
   data () {
     return {
@@ -20,10 +40,15 @@ export default {
     if (!this.urlId) {
       this.urlId = this.$route.query.id
     }
-    this.$http.get('/api/memory/findone', {'id': this.urlId}).then(function (res) {
+    this.$http.post('/api/memory/findone', {'id': this.urlId}).then(function (res) {
       this.$set(this, 'memory', res.body)
       this.memory = res.body
     })
+  },
+  filters: {
+    formateTime (time) {
+      return formatDate(time, 'yyyy/MM/dd hh:mm:ss')
+    }
   }
 }
 </script>

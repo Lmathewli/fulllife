@@ -66,7 +66,7 @@
                     </Menu-item>
                     <Menu-item name="2">
                       <Icon type="ios-keypad" :size="iconSize"></Icon>
-                      <router-link tag="span" class="layout-text" to="/">
+                      <router-link tag="span" class="layout-text" to="/article">
                         <a>文章</a>
                       </router-link>
                     </Menu-item>
@@ -82,13 +82,6 @@
                         <Icon type="navicon" size="32"></Icon>
                     </i-button>
                     <schedule :expectDate="memories"></schedule>
-                </div>
-                <div class="layout-breadcrumb">
-                    <Breadcrumb>
-                        <Breadcrumb-item href="#">首页</Breadcrumb-item>
-                        <Breadcrumb-item href="#">应用中心</Breadcrumb-item>
-                        <Breadcrumb-item>某应用</Breadcrumb-item>
-                    </Breadcrumb>
                 </div>
                 <div class="layout-content">
                     <div class="layout-content-main">

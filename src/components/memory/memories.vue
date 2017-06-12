@@ -1,5 +1,10 @@
 <template>
   <div class='memory'>
+    <div class="layout-breadcrumb">
+      <Breadcrumb>
+          <Breadcrumb-item href="/">主页</Breadcrumb-item>
+      </Breadcrumb>
+    </div>
     <router-link tag="span" class="layout-text" to="/addmemory">
       <a>来一个事情呗</a>
     </router-link>
@@ -48,9 +53,6 @@ export default {
           width: 150,
           align: 'center',
           render: (h, params) => {
-            debugger
-            console.log(params)
-            console.log(h)
             return h('div', [
               h('Button', {
                 props: {
@@ -73,7 +75,7 @@ export default {
                 },
                 on: {
                   click: () => {
-                    this.remove(params.index)
+                    this.remove(params.row._id)
                   }
                 }
               }, '删除')
@@ -100,6 +102,17 @@ export default {
   methods: {
     details (id) {
       this.$router.replace('/Memory?id=' + id)
+    },
+    remove (id) {
+      this.$http.post('/api/memory/removeone', {id: id}).then(function (res) {
+        this.$set(this, 'memories', res.body)
+        this.memories = res.body
+
+        for (var index = 0; index < this.memories.length; index++) {
+          this.memories[index].happenDate = formatDate(this.memories[index].happenDate, 'yyyy/MM/dd hh:mm:ss')
+          this.memories[index].expectDate = formatDate(this.memories[index].expectDate, 'yyyy/MM/dd hh:mm:ss')
+        }
+      })
     }
   }
 }

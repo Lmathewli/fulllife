@@ -31,14 +31,28 @@ router.get('/api/memory/find', (req, res) => {
   })
 })
 
-router.get('/api/memory/findone', (req, res) => {
-  console.log(req)
+router.post('/api/memory/findone', (req, res) => {
   Memory.findOne({_id: req.body.id}, (err, data) => {
     if (err) {
       res.send(err)
     } else {
       res.send(data)
     }
+  })
+})
+
+router.post('/api/memory/removeone', (req, res) => {
+  Memory.remove({_id: req.body.id}, (err) => {
+    if (err) {
+      res.send(err)
+    }
+    Memory.find((err, data) => {
+      if (err) {
+        res.send(err)
+      } else {
+        res.send(data)
+      }
+    })
   })
 })
 

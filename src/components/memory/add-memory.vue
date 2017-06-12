@@ -65,7 +65,7 @@ export default {
         memory: this.memory
       }
       this.$http.post('/api/memory/save', params).then(function () {
-        this.$router.replace('/Memory')
+        this.$router.replace('/Memories')
       })
     },
     handleSubmit () {
