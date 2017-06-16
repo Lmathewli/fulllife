@@ -5,7 +5,7 @@
           <Breadcrumb-item href="/">主页</Breadcrumb-item>
       </Breadcrumb>
     </div>
-    <router-link tag="span" class="layout-text" to="/addmemory">
+    <router-link tag="span" class="layout-text" to="/editmemory">
       <a>来一个事情呗</a>
     </router-link>
     <Table border :columns='columns5' :data='memories'></Table>

@@ -51,28 +51,27 @@
     .ivu-col{
         transition: width .2s ease-in-out;
     }
+    .ivu-row-flex{
+      height: 1024px;
+    }
 </style>
 <template>
     <div id="app" class="layout" :class="{'layout-hide-text': spanLeft < 5}">
         <Row type="flex">
             <i-col :span="spanLeft" class="layout-menu-left">
-                <Menu active-name="1" theme="dark" width="auto">
+                <Menu active-name="setActive" theme="dark" width="auto" @on-select="routeTo">
                     <div class="layout-logo-left">这是一个logo</div>
-                    <Menu-item name="1">
+                    <Menu-item name="memories">
                         <Icon type="ios-navigate" :size="iconSize"></Icon>
-                        <router-link tag="span" class="layout-text" to="/memories">
-                          <a>值得纪念的事情</a>
-                        </router-link>
+                        <span class="layout-text"><a>值得纪念的事情</a></span>
                     </Menu-item>
-                    <Menu-item name="2">
+                    <Menu-item name="article">
                       <Icon type="ios-keypad" :size="iconSize"></Icon>
-                      <router-link tag="span" class="layout-text" to="/article">
-                        <a>文章</a>
-                      </router-link>
+                      <span class="layout-text"><a>文章</a></span>
                     </Menu-item>
-                    <Menu-item name="3">
+                    <Menu-item name="basetool">
                         <Icon type="ios-analytics" :size="iconSize"></Icon>
-                        <span class="layout-text">选项 3</span>
+                        <span class="layout-text">工具</span>
                     </Menu-item>
                 </Menu>
             </i-col>
@@ -121,6 +120,9 @@ export default {
         this.spanLeft = 5
         this.spanRight = 19
       }
+    },
+    routeTo (e) {
+      this.$router.push(e)
     }
   },
   components: {

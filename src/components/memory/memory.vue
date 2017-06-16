@@ -21,6 +21,7 @@
         <Icon type="document-text"></Icon><label>描述：</label>
         <span v-html="memory.descreption"></span>
       </div>
+      <Button type="info" @click="router">编辑(Edit)</Button>
     </div>
   </div>
 </template>
@@ -48,6 +49,11 @@ export default {
   filters: {
     formateTime (time) {
       return formatDate(time, 'yyyy/MM/dd hh:mm:ss')
+    }
+  },
+  methods: {
+    router () {
+      this.$router.replace('/EditMemory?id=' + this.urlId)
     }
   }
 }

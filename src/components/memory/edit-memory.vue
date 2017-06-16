@@ -50,9 +50,11 @@ export default {
         descreption: ''
       },
       ruleValidate: {
-      }
+      },
+      urlId: ''
     }
   },
+  props: ['memoryProp'],
   components: {
     Editor
   },
@@ -68,9 +70,17 @@ export default {
         this.$router.replace('/Memories')
       })
     },
-    handleSubmit () {
-    },
     handleCancel () {
+      this.memory = {}
+    }
+  },
+  created () {
+    this.urlId = this.$route.query.id
+    if (this.urlId) {
+      this.$http.post('/api/memory/findone', {'id': this.urlId}).then(function (res) {
+        this.$set(this, 'memory', res.body)
+        this.memory = res.body
+      })
     }
   }
 }

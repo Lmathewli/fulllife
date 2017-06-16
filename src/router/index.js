@@ -5,7 +5,7 @@ import AddArticle from '../components/addarticle/addarticle.vue'
 import Login from '../components/login.vue'
 import Memories from '../components/memory/memories.vue'
 import Memory from '../components/memory/Memory.vue'
-import AddMemory from '../components/memory/add-memory.vue'
+import EditMemory from '../components/memory/edit-memory.vue'
 
 Vue.use(Router)
 
@@ -35,8 +35,43 @@ export default new Router({
     name: 'Memories',
     component: Memories
   }, {
-    path: '/addmemory',
-    name: 'AddMemory',
-    component: AddMemory
-  }]
+    path: '/EditMemory',
+    name: 'EditMemory',
+    component: EditMemory
+  }, {
+    path: '/basetool',
+    component: resolve => require(['../components/basetool/index.vue'], resolve),
+    children: [
+      {
+        path: '/form',
+        component: resolve => require(['../components/basetool/form.vue'], resolve)
+      },
+      {
+        path: '/table',
+        component: resolve => require(['../components/basetool/table.vue'], resolve)
+      },
+      {
+        path: '/markdown-viewer',
+        component: resolve => require(['../components/basetool/markdown-viewer.vue'], resolve)
+      },
+      {
+        path: '/markdown-editor-1',
+        component: resolve => require(['../components/basetool/markdown-editor-1.vue'], resolve)
+      },
+      {
+        path: '/markdown-editor-2',
+        component: resolve => require(['../components/basetool/markdown-editor-2.vue'], resolve)
+      },
+      {
+        path: '/rtf',
+        component: resolve => require(['../components/basetool/rtf.vue'], resolve)
+      }, {
+        path: '/upload',
+        component: resolve => require(['../components/basetool/upload.vue'], resolve)
+      }, {
+        path: '/echarts',
+        component: resolve => require(['../components/basetool/echarts.vue'], resolve)
+      }
+    ]
+  } ]
 })
