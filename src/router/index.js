@@ -6,6 +6,9 @@ import Login from '../components/login.vue'
 import Memories from '../components/memory/memories.vue'
 import Memory from '../components/memory/Memory.vue'
 import EditMemory from '../components/memory/edit-memory.vue'
+import Story from '../components/story/story.vue'
+import Blog from '../components/blog/blog.vue'
+import Label from '../components/label/label.vue'
 
 Vue.use(Router)
 
@@ -38,6 +41,18 @@ export default new Router({
     path: '/EditMemory',
     name: 'EditMemory',
     component: EditMemory
+  }, {
+    path: '/Story',
+    name: 'Story',
+    component: Story
+  }, {
+    path: '/Blog',
+    name: 'Blog',
+    component: Blog
+  }, {
+    path: '/Label',
+    name: 'Label',
+    component: Label
   }, {
     path: '/basetool',
     component: resolve => require(['../components/basetool/index.vue'], resolve),

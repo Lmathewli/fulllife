@@ -60,10 +60,10 @@
         <Row type="flex">
             <i-col :span="spanLeft" class="layout-menu-left">
                 <Menu active-name="setActive" theme="dark" width="auto" @on-select="routeTo">
-                    <div class="layout-logo-left">这是一个logo</div>
+                    <div class="layout-logo-left">logo</div>
                     <Menu-item name="memories">
-                        <Icon type="ios-navigate" :size="iconSize"></Icon>
-                        <span class="layout-text"><a>值得纪念的事情</a></span>
+                        <Icon type="paper-airplane" :size="iconSize"></Icon>
+                        <span class="layout-text"><a>那些事儿</a></span>
                     </Menu-item>
                     <Menu-item name="article">
                       <Icon type="ios-keypad" :size="iconSize"></Icon>
@@ -72,6 +72,18 @@
                     <Menu-item name="basetool">
                         <Icon type="ios-analytics" :size="iconSize"></Icon>
                         <span class="layout-text">工具</span>
+                    </Menu-item>
+                    <Menu-item name="story">
+                      <Icon type="ios-analytics" :size="iconSize"></Icon>
+                      <span class="layout-text"><a>故事</a></span>
+                    </Menu-item>
+                    <Menu-item name="blog">
+                      <Icon type="edit" :size="iconSize"></Icon>
+                      <span class="layout-text"><a>博客</a></span>
+                    </Menu-item>
+                    <Menu-item name="label">
+                      <Icon type="edit" :size="iconSize"></Icon>
+                      <span class="layout-text"><a>标签</a></span>
                     </Menu-item>
                 </Menu>
             </i-col>
@@ -106,7 +118,7 @@ export default {
   },
   computed: {
     iconSize () {
-      return this.spanLeft === 5 ? 14 : 24
+      return this.spanLeft === 5 ? 25 : 34
     }
   },
   created () {

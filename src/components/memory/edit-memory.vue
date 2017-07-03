@@ -1,43 +1,45 @@
 <template>
-  <div class="memory">
-    <Form ref="memory" :model="memory" :label-width="80" :rules="ruleValidate" label-position="right">
-      <Form-item label="主题：">
-        <Input v-model="memory.subject" placeholder="subject" style="width: 300px;"></Input>
-      </Form-item>
-      <Form-item label="发生时间：">
-        <Row>
-          <Date-picker type="datetime"  v-model="memory.happenDate" placeholder="Date" style="width: 300px"></Date-picker>
-        </Row>
-      </Form-item>
-      <Form-item label="提醒时间：">
-        <Row>
-          <Date-picker type="datetime"  v-model="memory.expectDate" placeholder="Date" style="width: 300px"></Date-picker>
-        </Row>
-      </Form-item>
-      <Form-item label="地址：">
-        <Input v-model="memory.address" placeholder="address" style="width: 300px;"></Input>
-      </Form-item>
-        <!--最好是一个select： 爷爷，奶奶，爸爸，妈妈，儿女，男女友。-->
-      <Form-item label="人物：">
-        <Input v-model="memory.character" placeholder="character" style="width: 300px;"></Input>
-      </Form-item>
-      <Form-item label="描述:">
-        <div class="editor">
-          <editor :editorContent="memory.descreption">
-          </editor>
-        </div>
-      </Form-item>
-      <Form-item>
-        <Button type="primary" @click="saveMemory">提交</Button>
-        <Button type="ghost" @click="handleCancel" style="margin-left: 10px">重置</Button>
-      </Form-item>
-    </Form>
-  </div>
+<div class="memory">
+  <Form ref="memory" :model="memory" :label-width="80" :rules="ruleValidate" label-position="right">
+    <Form-item label="主题：">
+      <Input v-model="memory.subject" placeholder="subject" style="width: 300px;"></Input>
+    </Form-item>
+    <Form-item label="发生时间：">
+      <Row>
+        <Date-picker type="datetime" v-model="memory.happenDate" placeholder="Date" style="width: 300px"></Date-picker>
+      </Row>
+    </Form-item>
+    <Form-item label="提醒时间：">
+      <Row>
+        <Date-picker type="datetime" v-model="memory.expectDate" placeholder="Date" style="width: 300px"></Date-picker>
+      </Row>
+    </Form-item>
+    <Form-item label="地址：">
+      <Input v-model="memory.address" placeholder="address" style="width: 300px;"></Input>
+    </Form-item>
+    <!--最好是一个select： 爷爷，奶奶，爸爸，妈妈，儿女，男女友。-->
+    <Form-item label="人物：">
+      <Input v-model="memory.character" placeholder="character" style="width: 300px;"></Input>
+    </Form-item>
+    <Form-item label="描述:">
+      <div class="editor">
+        <editor :editorContent="memory.descreption">
+        </editor>
+      </div>
+    </Form-item>
+    <Form-item>
+      <Button type="primary" @click="saveMemory">提交</Button>
+      <Button type="ghost" @click="handleCancel" style="margin-left: 10px">重置</Button>
+    </Form-item>
+  </Form>
+</div>
 </template>
 
 <script>
 import Editor from '../editor/editor'
-import {formatDate} from '../../common/js/date.js'
+import {
+  formatDate
+} from '../../common/js/date.js'
 export default {
   data () {
     return {
@@ -49,8 +51,7 @@ export default {
         character: '',
         descreption: ''
       },
-      ruleValidate: {
-      },
+      ruleValidate: {},
       urlId: ''
     }
   },
@@ -77,7 +78,9 @@ export default {
   created () {
     this.urlId = this.$route.query.id
     if (this.urlId) {
-      this.$http.post('/api/memory/findone', {'id': this.urlId}).then(function (res) {
+      this.$http.post('/api/memory/findone', {
+        'id': this.urlId
+      }).then(function (res) {
         this.$set(this, 'memory', res.body)
         this.memory = res.body
       })

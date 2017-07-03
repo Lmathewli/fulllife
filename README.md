@@ -1,4 +1,5 @@
 # fulllife
+# 始终关注情境
 
 > A Vue.js project
 
@@ -6,6 +7,12 @@
 
 ``` bash
 # install dependencies
+npm install iview-theme -g --save
+
+cd custom-theme
+
+iview-theme build -o dist/
+
 npm install
 
 # serve with hot reload at localhost:8080

@@ -76,7 +76,8 @@ export default {
     },
     bindingEvents () {
       this.simplemde.codemirror.on('change', () => {
-        this.$emit('input', this.simplemde.value())
+        // 发射事件
+        this.$emit('on-value-change', this.simplemde.value())
       })
     },
     addPreviewClass (className) {
@@ -97,7 +98,9 @@ export default {
   },
   watch: {
     value (val) {
-      if (val === this.simplemde.value()) return
+      if (val === this.simplemde.value()) {
+        return
+      }
       this.simplemde.value(val)
     }
   }
