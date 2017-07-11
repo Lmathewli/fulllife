@@ -23,6 +23,19 @@
       <MakeDownEditor :value="blog.content" @on-value-change="onValueChange"></MakeDownEditor>
     </Form-item>
     <Form-item>
+      <Upload
+        multiple
+        type="drag"
+        action="/api/blog/saveFile"
+        :on-success="test"
+        >
+        <div style="padding: 20px 0">
+            <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+            <p>点击或将文件拖拽到这里上传</p>
+        </div>
+      </Upload>
+    </Form-item>
+    <Form-item>
       <Button type="primary" @click="saveBlog">提交</Button>
       <Button type="ghost" style="margin-left: 8px" @click="showModal">取消</Button>
       <Modal
@@ -85,6 +98,11 @@ export default {
         content: ''
       }
       this.blog.content = ''
+    },
+    test (res, file) {
+      console.log(res)
+      console.log(file)
+      console.log('ff', __dirname)
     }
   },
   watch: {

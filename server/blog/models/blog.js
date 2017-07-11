@@ -8,6 +8,7 @@ const blogSchema = mongoose.Schema({
   date: Date,
   labels: Array,
   content: String,
+  bookPaths: Array,
   isMyCreated: Boolean
 })
 

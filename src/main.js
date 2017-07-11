@@ -19,7 +19,8 @@ Vue.use(IEcharts)
 
 const vuexStore = new Vuex.Store({
   state: {
-    editorContent: ''
+    editorContent: '',
+    pdfPath: ''
   },
   mutations: {
     content (state) {

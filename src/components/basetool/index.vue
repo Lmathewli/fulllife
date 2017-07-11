@@ -108,6 +108,10 @@
                     <Icon type="pie-graph" :size="iconSize"></Icon>
                     <span class="layout-text">图表(Echarts)</span>
                 </Menu-item>
+                <Menu-item name="pdftool">
+                    <Icon type="pie-graph" :size="iconSize"></Icon>
+                    <span class="layout-text">pdf</span>
+                </Menu-item>
             </Menu>
         </i-col>
         <i-col :span="spanRight">

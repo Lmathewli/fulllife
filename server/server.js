@@ -14,6 +14,7 @@ const UserRouter = require('./user/router/user-router')
 const MemoryRouter = require('./memory/router/memory-router')
 const BlogRouter = require('./blog/router/blog-router')
 const LabelRouter = require('./label/router/label-router')
+const BookRouter = require('./book/router/book-router')
 // 引入文件模块
 const fs = require('fs')
 // 引入处理路径的模块
@@ -30,6 +31,7 @@ app.use(UserRouter)
 app.use(MemoryRouter)
 app.use(BlogRouter)
 app.use(LabelRouter)
+app.use(BookRouter)
 // 访问静态资源文件 这里是访问所有dist目录下的静态资源文件
 app.use(express.static(path.resolve(__dirname, '../dist')))
 // 因为是单页应用 所有请求都走/dist/index.html

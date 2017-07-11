@@ -85,6 +85,10 @@
                       <Icon type="edit" :size="iconSize"></Icon>
                       <span class="layout-text"><a>标签</a></span>
                     </Menu-item>
+                    <Menu-item name="book">
+                      <Icon type="edit" :size="iconSize"></Icon>
+                      <span class="layout-text"><a>书</a></span>
+                    </Menu-item>
                 </Menu>
             </i-col>
             <i-col :span="spanRight">

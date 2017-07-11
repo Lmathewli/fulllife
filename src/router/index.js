@@ -9,6 +9,7 @@ import EditMemory from '../components/memory/edit-memory.vue'
 import Story from '../components/story/story.vue'
 import Blog from '../components/blog/blog.vue'
 import Label from '../components/label/label.vue'
+import Book from '../components/book/book.vue'
 
 Vue.use(Router)
 
@@ -50,6 +51,10 @@ export default new Router({
     name: 'Blog',
     component: Blog
   }, {
+    path: '/Book',
+    name: 'Book',
+    component: Book
+  }, {
     path: '/Label',
     name: 'Label',
     component: Label
@@ -86,6 +91,9 @@ export default new Router({
       }, {
         path: '/echarts',
         component: resolve => require(['../components/basetool/echarts.vue'], resolve)
+      }, {
+        path: '/PdfTool',
+        component: resolve => require(['../components/basetool/pdf.vue'], resolve)
       }
     ]
   } ]
